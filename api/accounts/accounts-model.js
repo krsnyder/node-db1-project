@@ -1,12 +1,12 @@
 const db = require("../../data/db-config")
 
 const getAll = () => {
-  return db("posts")
+  return db("accounts")
 }
 
 const getById = id => {
-  return db("posts").where("id", id).first()
-  //return db("posts").where({id}).first()
+  return db("accounts").where("id", id).first()
+  //return db("accounts").where({id}).first()
 }
 
 const create = async ({name, budget}) => {
@@ -15,13 +15,13 @@ const create = async ({name, budget}) => {
 }
 
 const updateById = async (id, {name, budget}) => {
-  await db("posts").where("id", id).update({ name, budget })
+  await db("accounts").where("id", id).update({ name, budget })
   return getById(id)
 }
 
 const deleteById = async id => {
   const deletedPost = await getById(id)
-  await db("posts").where("id", id).delete()
+  await db("accounts").where("id", id).delete()
   return(deletedPost)
 }
 
